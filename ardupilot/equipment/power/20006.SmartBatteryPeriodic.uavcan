@@ -1,0 +1,12 @@
+#
+# Smart battery data to be sent periodically (1Hz or less)
+#
+
+uint8[<=32] name                # Formatted as manufacturer_model, eg wattsinnovations_smartbattery
+uint32 serial                   # Manufacturer serial number
+uint8 id                        # Numeric ID to correlate with SmartBatteryContinuous
+uint8 state_of_health           # [Percent]
+uint16 cycle_count
+float16 design_capacity         # [Watt hours]
+float16 actual_capacity         # [Watt hours]
+float16[<=14] cell_voltages     # [Volt] -- TODO: maximum number of cells?

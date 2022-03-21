@@ -1,0 +1,20 @@
+#
+# Smart battery data to be sent continuously (10Hz or greater)
+#
+
+float16 temperature             # [Celsius]
+float16 current                 # [Ampere]
+float16 voltage                 # [Volt]
+uint8 remaining                 # [Percent]
+uint16 status                   # [TODO: Bitmask OR enums?] charging/discharging, protections enabled/disabled, error status, etc
+uint8 id                        # Numeric ID to correlate with SmartBatteryPeriodic
+
+# TODO: define flags
+uint16 STATUS_FLAG_IN_USE               = 1
+uint16 STATUS_FLAG_CHARGING             = 2
+uint16 STATUS_FLAG_OVER_TEMP            = 4
+uint16 STATUS_FLAG_OVER_VOLT            = 8
+uint16 STATUS_FLAG_OVER_CURRENT         = 16
+uint16 STATUS_FLAG_CELL_IMBALANCE       = 32
+uint16 STATUS_FLAG_PROTECTIONS_ENABLED  = 64
+uint16 STATUS_FLAG_ERROR_UNKNOWN        = 256
