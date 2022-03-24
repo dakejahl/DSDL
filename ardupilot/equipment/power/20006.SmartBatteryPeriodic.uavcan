@@ -4,9 +4,9 @@
 
 uint8[<=32] name                # Formatted as manufacturer_model, eg wattsinnovations_smartbattery
 uint32 serial                   # Manufacturer serial number
-uint8 id                        # Numeric ID to correlate with SmartBatteryContinuous
 uint8 state_of_health           # [Percent]
 uint16 cycle_count
+uint16 time_remaining           # [Seconds]
 float16 design_capacity         # [Watt hours]
 float16 actual_capacity         # [Watt hours]
-float16[<=14] cell_voltages     # [Volt] -- TODO: maximum number of cells?
+float16[<=24] cell_voltages     # [Volt]
