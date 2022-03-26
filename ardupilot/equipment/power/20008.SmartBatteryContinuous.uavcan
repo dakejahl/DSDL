@@ -2,18 +2,21 @@
 # Smart battery data to be sent continuously (10Hz or greater)
 #
 
-float16 temperature             # [Celsius]
-float16 current                 # [Ampere]
-float16 voltage                 # [Volt]
-uint8 remaining                 # [Percent]
-uint16 status                   # [Bitmask]
+int16_t temperature             # [cdegC]
+int16_t current                 # [cA]
+uint16_t voltage                # [mV]
+int8 battery_remaining          # [%]
+int32 time_remaining            # [s]
+uint32 status_flags
 
 uint16 STATUS_FLAG_IN_USE               = 1
 uint16 STATUS_FLAG_CHARGING             = 2
 uint16 STATUS_FLAG_OVER_TEMP            = 4
-uint16 STATUS_FLAG_OVER_VOLT            = 8
-uint16 STATUS_FLAG_OVER_CURRENT         = 16
-uint16 STATUS_FLAG_CELL_IMBALANCE       = 32
-uint16 STATUS_FLAG_PROTECTIONS_ENABLED  = 64
-uint16 STATUS_FLAG_REQUIRES_SERVICE     = 128
-uint16 STATUS_FLAG_ERROR_UNKNOWN        = 256
+uint16 STATUS_FLAG_UNDER_TEMP           = 8
+uint16 STATUS_FLAG_OVER_VOLT            = 16
+uint16 STATUS_FLAG_OVER_CURRENT         = 32
+uint16 STATUS_FLAG_CELL_IMBALANCE       = 64
+uint16 STATUS_FLAG_PROTECTIONS_ENABLED  = 128
+uint16 STATUS_FLAG_REQUIRES_SERVICE     = 256
+uint16 STATUS_FLAG_BAD_BATTERY          = 512
+uint16 STATUS_FLAG_ERROR_UNKNOWN        = 32768
