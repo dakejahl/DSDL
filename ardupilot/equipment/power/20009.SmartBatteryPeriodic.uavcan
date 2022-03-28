@@ -8,4 +8,4 @@ uint8[<=11] manufacture_date       # Manufacture date (DD/MM/YYYY) in ASCII char
 int32 capacity_full_specification  # [mAh]
 int32 capacity_full                # [mAh]
 uint16 cycle_count
-uint16_t[<=24] cell_voltages       # [mV]
+uint16[<=24] cell_voltages       # [mV]

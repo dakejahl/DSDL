@@ -2,9 +2,9 @@
 # Smart battery data to be sent continuously (10Hz or greater)
 #
 
-int16_t temperature             # [cdegC]
-int16_t current                 # [cA]
-uint16_t voltage                # [mV]
+int16 temperature             # [cdegC]
+int16 current                 # [cA]
+uint16 voltage                # [mV]
 int8 battery_remaining          # [%]
 int32 time_remaining            # [s]
 uint32 status_flags
