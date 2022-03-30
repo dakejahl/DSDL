@@ -2,10 +2,10 @@
 # Smart battery data to be sent periodically (frequency TBD)
 #
 
-uint8[<=50] name                    # Formatted as manufacturer_product, eg wattsinnovations_smartbattery
+uint8[<=50] name                    # Formatted as manufacturer_product
 uint8[<=16] serial_number           # Serial number in ASCII characters, 0 terminated
 uint8[<=11] manufacture_date        # Manufacture date (DD/MM/YYYY) in ASCII characters, 0 terminated
-uint32 capacity_full_specification  # [mAh]
-uint32 capacity_full                # [mAh]
+uint32 design_capacity              # [mAh]
+uint32 actual_capacity              # [mAh]
 uint16 cycle_count
-float16[<=24] cell_voltages          # [mV]
+float16[<=24] cell_voltages         # [mV]
