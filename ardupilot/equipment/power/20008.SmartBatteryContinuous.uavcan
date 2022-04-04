@@ -5,22 +5,22 @@
 float16 temperature             # [C]
 float16 current                 # [Ampere]
 float16 voltage                 # [Volt]
-uint8 percent_remaining         # [%] 0 empty, 255 full
-uint16 time_remaining           # [s] 0 if unknown
+uint32 current_consumed         # [mAh] 	# 0 if unknown
+uint8 percent_remaining         # [%] 		# 0 empty, 255 full
 uint32 status_flags
 
-uint16 STATUS_FLAG_IN_USE               = 1
-uint16 STATUS_FLAG_CHARGING             = 2
-uint16 STATUS_FLAG_OVER_TEMP            = 4
-uint16 STATUS_FLAG_UNDER_TEMP           = 8
-uint16 STATUS_FLAG_OVER_VOLT            = 16
-uint16 STATUS_FLAG_UNDER_VOLT           = 32
-uint16 STATUS_FLAG_OVER_CURRENT         = 64
-uint16 STATUS_FLAG_SHORT_CIRCUIT        = 128
-uint16 STATUS_FLAG_SAFETY_FAULT         = 256
-uint16 STATUS_FLAG_CELL_IMBALANCE       = 512
-uint16 STATUS_FLAG_CELL_BALANCING       = 1024
-uint16 STATUS_FLAG_PROTECTIONS_ENABLED  = 2048
-uint16 STATUS_FLAG_REQUIRES_SERVICE     = 4096
-uint16 STATUS_FLAG_BAD_BATTERY          = 8192
-uint16 STATUS_FLAG_ERROR_UNKNOWN        = 32768
+uint32 STATUS_FLAG_IN_USE               = 1
+uint32 STATUS_FLAG_CHARGING             = 2
+uint32 STATUS_FLAG_OVER_TEMP            = 4
+uint32 STATUS_FLAG_UNDER_TEMP           = 8
+uint32 STATUS_FLAG_OVER_VOLT            = 16
+uint32 STATUS_FLAG_UNDER_VOLT           = 32
+uint32 STATUS_FLAG_OVER_CURRENT         = 64
+uint32 STATUS_FLAG_SHORT_CIRCUIT        = 128
+uint32 STATUS_FLAG_SAFETY_FAULT         = 256
+uint32 STATUS_FLAG_CELL_IMBALANCE       = 512
+uint32 STATUS_FLAG_CELL_BALANCING       = 1024
+uint32 STATUS_FLAG_PROTECTIONS_ENABLED  = 2048
+uint32 STATUS_FLAG_REQUIRES_SERVICE     = 4096
+uint32 STATUS_FLAG_BAD_BATTERY          = 8192
+uint32 STATUS_FLAG_ERROR_UNKNOWN        = 4294967295
