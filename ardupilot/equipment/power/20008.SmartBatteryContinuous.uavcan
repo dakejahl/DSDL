@@ -3,7 +3,7 @@
 #
 
 float16 temperature             # [C]
-float16 current                 # [Ampere]
+float32 current                 # [Ampere]
 float16 voltage                 # [Volt]
 uint32 capacity_consumed        # [mAh]
 uint32 capacity_remaining       # [mAh]
