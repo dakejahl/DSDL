@@ -5,8 +5,8 @@
 float16 temperature             # [C]
 float16 current                 # [Ampere]
 float16 voltage                 # [Volt]
-uint32 current_consumed         # [mAh] 	# 0 if unknown
-uint8 percent_remaining         # [%] 		# 0 empty, 255 full
+uint32 capacity_consumed        # [mAh]
+uint32 capacity_remaining       # [mAh]
 uint32 status_flags
 
 uint32 STATUS_FLAG_IN_USE               = 1
