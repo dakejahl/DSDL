@@ -87,13 +87,15 @@ uint8 ANTENNA_POWER_ON       = 2
 uint8 antenna_power
 
 #
-# Fix quality/confidence indicator [0-100].
-# Receiver's assessment of fix quality, independent of fix_type.
-# 0 = no confidence / invalid, 100 = full confidence.
-# Receivers without internal quality metrics can derive from fix_type:
-#   NO_FIX=0, 2D=30, 3D=60, DGPS=75, RTK_FLOAT=85, RTK_FIXED=100
+# Abstract quality indicators [0-10], 255 if unavailable.
+# Aligned with MAVLink GNSS_INTEGRITY (id 441).
+# Higher values indicate higher quality. Semantics follow the receiver's
+# own definition (e.g. Septentrio QualityInd SBF block).
 #
-uint8 fix_quality
+uint8 corrections_quality        # Quality of incoming differential corrections
+uint8 system_status_summary      # Overall receiver operating status
+uint8 gnss_signal_quality        # Quality of received GNSS signals
+uint8 post_processing_quality    # Expected post-processing quality
 
 #
 # System error flags (bitmask).
