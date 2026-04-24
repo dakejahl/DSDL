@@ -1,0 +1,31 @@
+#
+# Per-sample diagnostics for optical flow sensors.
+#
+# Broadcast alongside com.hex.equipment.flow.Measurement (DTID 20200) at
+# the flow-chip sample rate. Carries fields needed to assess the
+# reliability/confidence of each flow sample that are not representable
+# in the single uint8 `quality` byte of the companion message.
+#
+
+uint24 shutter             # Exposure integration time, sensor clocks.
+                           # Right-justified: PAA3905 uses the full 23-bit
+                           # value, PAW3902 uses the low 13 bits.
+                           # 0xFFFFFF = invalid.
+
+uint2 illumination_mode    # 0 = bright, 1 = low-light,
+                           # 2 = super-low-light, 3 = unknown.
+bool  motion               # 1 = motion bit set in this frame.
+bool  challenging_surface  # 1 = striped / checkerboard / glossy surface.
+                           # PAA3905: hardware flag (Motion register bit 0).
+                           # PAW3902: always 0 (chip has no such flag).
+bool  chip_health_ok       # 1 = chip self-reported healthy this frame.
+                           # PAA3905: Observation[5:0] == 0x3F.
+                           # PAW3902: no unexpected reset since last sample.
+void3                      # reserved, must be zero.
+
+uint16 discard_count       # Saturating count of frames dropped by the
+                           # driver's SQUAL/Shutter false-motion guard
+                           # since boot. Rate of change is the useful
+                           # signal; absolute value is not.
+uint16 mode_change_count   # Saturating count of illumination-mode
+                           # transitions since boot.
