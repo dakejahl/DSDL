@@ -14,11 +14,11 @@ uint24 shutter             # Exposure integration time, sensor clocks.
 
 uint2 illumination_mode    # 0 = bright, 1 = low-light,
                            # 2 = super-low-light, 3 = unknown.
-uint1 motion               # 1 = motion bit set in this frame.
-uint1 challenging_surface  # 1 = striped / checkerboard / glossy surface.
+bool  motion               # 1 = motion bit set in this frame.
+bool  challenging_surface  # 1 = striped / checkerboard / glossy surface.
                            # PAA3905: hardware flag (Motion register bit 0).
                            # PAW3902: always 0 (chip has no such flag).
-uint1 chip_health_ok       # 1 = chip self-reported healthy this frame.
+bool  chip_health_ok       # 1 = chip self-reported healthy this frame.
                            # PAA3905: Observation[5:0] == 0x3F.
                            # PAW3902: no unexpected reset since last sample.
 void3                      # reserved, must be zero.
