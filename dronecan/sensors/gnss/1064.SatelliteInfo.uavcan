@@ -1,0 +1,47 @@
+#
+# One satellite, or one signal of a satellite, from the set a GNSS receiver reports.
+# The node sends the whole set periodically, one message per entry, index counting
+# from 0 and last set on the final entry. A consumer replaces its table for that node
+# when a set completes, and timestamps the set by the reception of its first entry.
+# Angles are in degrees and C/N0 in dB-Hz, not SI units.
+#
+# Rate: set by parameter on the node (default off)
+#
+
+uint8 index                     # Position in the current set, starting at 0
+bool last                       # Final entry of the current set
+
+uint4 GNSS_ID_GPS     = 0       # Same values as u-blox gnssId
+uint4 GNSS_ID_SBAS    = 1
+uint4 GNSS_ID_GALILEO = 2
+uint4 GNSS_ID_BEIDOU  = 3
+uint4 GNSS_ID_QZSS    = 5
+uint4 GNSS_ID_GLONASS = 6
+uint4 GNSS_ID_NAVIC   = 7
+uint4 gnss_id
+
+uint8 prn                       # PRN within the constellation: GPS 1-32, SBAS 120-158, Galileo 1-36, BeiDou 1-63,
+                                # QZSS 193-202, NavIC 1-14. GLONASS has no PRN: its slot number 1-24. 0 if unknown
+
+uint4 band                      # RINEX 3 frequency band of this signal (1, 2, 5, 6, 7, ...). 0 if the entry describes
+                                # the satellite as a whole: its strongest signal's C/N0, its best tracking state and
+                                # the flags of all its signals combined
+
+int8 ELEVATION_UNKNOWN = -128
+int8 elevation                  # [deg] Above the local horizon at the antenna, -90 to 90
+
+uint9 AZIMUTH_UNKNOWN = 511
+uint9 azimuth                   # [deg] Clockwise from true north, 0 to 359
+
+uint6 cn0                       # [dB-Hz] Carrier-to-noise density ratio, 0 if not tracked
+
+uint2 TRACKING_NONE    = 0      # Searching, or not tracked
+uint2 TRACKING_SIGNAL  = 1      # Signal acquired, not yet usable
+uint2 TRACKING_CODE    = 2      # Code locked
+uint2 TRACKING_CARRIER = 3      # Code and carrier locked
+uint2 tracking
+
+uint6 FLAG_USED        = 1      # Used in the navigation solution; clear if the receiver does not report it
+uint6 FLAG_UNHEALTHY   = 2      # Marked unhealthy by its navigation message
+uint6 FLAG_CORRECTIONS = 4      # Differential corrections applied
+uint6 flags
